@@ -13,7 +13,7 @@ const Clim = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     padding:1rem;
     place-items: center;
 `
