@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Otros = styled.div`
-    grid-area: 2 / 2 / 4 / 5;
+    grid-area: 2 / 1 / 4 / 4;
     height:100%;
     width:100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
 `
 
 const A1 = styled.div`
@@ -17,6 +17,7 @@ const A1 = styled.div`
     width:100%;
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
+    box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `
 
 const B1 = styled.div`
@@ -25,6 +26,7 @@ const B1 = styled.div`
     width:100%;
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
+    box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `
 
 const A2 = styled.div`
@@ -33,6 +35,7 @@ const A2 = styled.div`
     width:100%;
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
+    box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `
 
 const B2 = styled.div`
@@ -41,6 +44,7 @@ const B2 = styled.div`
     width:100%;
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
+    box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `
 
 const A3 = styled.div`
@@ -49,6 +53,7 @@ const A3 = styled.div`
     width:100%;
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
+    box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `
 
 const B3 = styled.div`
@@ -57,65 +62,72 @@ const B3 = styled.div`
     width:100%;
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
+    box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `
 
-const Humedad = () => {
+const Humedad = ({humed}) => {
   return (
     <A1>
-      Humedad
+      <p>Humedad</p>
+      <p>{humed}%</p>
     </A1>
   )
 }
 
-const UV = () => {
+const UV = ({uvInd}) => {
   return (
     <B1>
-      UV
+      <p>UV</p>
+      <p>{uvInd}</p>
     </B1>
   )
 }
 
-const Viento = () => {
+const Viento = ({vientoV}) => {
   return (
     <A2>
-      Viento
+      <p>Viento</p>
+      <p>{vientoV} km/h</p>
     </A2>
   )
 }
 
-const Visibilidad = () => {
+const Visibilidad = ({visib}) => {
   return (
     <B2>
-      Visibilidad
+      <p>Visibilidad</p>
+      <p>{visib} m</p>
     </B2>
   )
 }
 
-const Amanecer = () => {
+const Amanecer = ({amanec,anoch}) => {
   return (
     <A3>
-      Amanecer
+      <p>Amanecer Anochecer</p>
+      <p>{amanec} {anoch}</p>
     </A3>
   )
 }
 
-const Calidad = () => {
+const Calidad = ({calid}) => {
   return (
     <B3>
-      Calidad
+      <p>Calidad</p>
+      <p>{calid}</p>
     </B3>
   )
 }
 
-const OtrosDatos = () => {
+const OtrosDatos = ({humed,vientoV,vientoD,uvInd,amanec,anoch,visib,calid}) => {
   return (
     <Otros>
-      <Humedad/>
-      <UV/>
-      <Viento/>
-      <Visibilidad/>
-      <Amanecer/>
-      <Calidad/>
+      <Humedad humed={humed}/>
+      <UV uvInd={uvInd}/>
+      <Viento vientoV={vientoV} vientoD={vientoD}/>
+      <Visibilidad visib={visib}/>
+      <Amanecer amanec={amanec} anoch={anoch}/>
+      <Calidad calid={calid}/>
     </Otros>
   )
 }
