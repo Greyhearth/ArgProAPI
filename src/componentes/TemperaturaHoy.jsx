@@ -4,60 +4,53 @@ import styled from 'styled-components';
 const Hoy = styled.div`
     grid-area: 1 / 1 / 1 / 4;
     display: grid;
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr);
     height:100%;
     width:100%;
-    background:linear-gradient(315deg, #adadad, white);
+    background:linear-gradient(45deg, #adadad, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-    ${'' /* border: 1px solid black; */}
+    padding:0.5rem;
+`
+const IconoCont = styled.p`
+    grid-area: 1 / 1 / 5 / 1;
 `
 
-const Encabezado = styled.p`
-    grid-area: 1 / 1 / 1 / 5;
-    ${'' /* border: 1px solid black; */}
+const Ico = styled.img`
+    max-width: 8rem;
+    height: auto;
 `
 
-const Icono = styled.p`
-    grid-area: 2 / 1 / 6 / 1;
-    ${'' /* border: 1px solid black; */}
+const Desc = styled.p`
+    grid-area: 5 / 1 / 5 / 1;
+    font-size: 1.2rem;
 `
 
 const Temp = styled.p`
-    grid-area: 2 / 2 / 6 / 3;
-    ${'' /* border: 1px solid black; */}
+    grid-area: 1 / 2 / 4 / 2;
+    font-size: 4rem;
 `
 
 const Max = styled.p`
-    grid-area: 2 / 3 / 2 / 5;
-    ${'' /* border: 1px solid black; */}
+    grid-area: 4 / 2 / 4 / 2;
+    font-size: 1.2rem;
 `
 
 const Min = styled.p`
-    grid-area: 3 / 3 / 3 / 5;
-    ${'' /* border: 1px solid black; */}
+    grid-area: 5 / 2 / 5 / 2;
+    font-size: 1.2rem;
 `
 
-const Lluv = styled.p`
-    grid-area: 4 / 3 / 4 / 5;
-    ${'' /* border: 1px solid black; */}
-`
-const Vient = styled.p`
-    grid-area: 5 / 3 / 5 / 5;
-    ${'' /* border: 1px solid black; */}
-`
-
-const TemperaturaHoy = ({tempAct,tempMax,tempMin,lluv,weathercode}) => {
+const TemperaturaHoy = ({tempAct,tempMax,tempMin,lluv,weathercode,weathercodeDef}) => {
   return (
     <Hoy>
-      <Encabezado>Clima Hoy</Encabezado>
-      <Icono>{weathercode}</Icono>
+      <IconoCont><Ico src={require(`./weatherIcons/${weathercode}.png`)} alt={weathercode}/></IconoCont>
       <Temp>{tempAct}°C</Temp>
       <Max>T°C Max: {tempMax}</Max>
       <Min>T°C Min: {tempMin}</Min>
-      <Lluv>Prob. de lluvia: {lluv}%</Lluv>
-      <Vient>nada en realidad</Vient>
+      <Desc>{weathercodeDef}</Desc>
+        {/* <Lluv>Prob. de lluvia: {lluv}%</Lluv>  */}
     </Hoy>
   )
 }

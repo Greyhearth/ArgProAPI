@@ -18,6 +18,7 @@ const A1 = styled.div`
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    padding:1rem;
 `
 
 const B1 = styled.div`
@@ -27,6 +28,7 @@ const B1 = styled.div`
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    padding:1rem;
 `
 
 const A2 = styled.div`
@@ -36,6 +38,7 @@ const A2 = styled.div`
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    padding:1rem;
 `
 
 const B2 = styled.div`
@@ -45,6 +48,7 @@ const B2 = styled.div`
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    padding:1rem;
 `
 
 const A3 = styled.div`
@@ -54,6 +58,26 @@ const A3 = styled.div`
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding:1rem;
+`
+
+const A3A = styled.p`
+    grid-area: 1 / 1 / 1 / 1;
+`
+
+const A3B = styled.p`
+    grid-area: 1 / 2 / 1 / 2;
+`
+
+const A3C = styled.p`
+    grid-area: 2 / 1 / 2 / 1;
+`
+
+const A3D = styled.p`
+    grid-area: 2 / 2 / 2 / 2;
 `
 
 const B3 = styled.div`
@@ -63,6 +87,7 @@ const B3 = styled.div`
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    padding:1rem;
 `
 
 const Humedad = ({humed}) => {
@@ -77,7 +102,7 @@ const Humedad = ({humed}) => {
 const UV = ({uvInd}) => {
   return (
     <B1>
-      <p>UV</p>
+      <p>Indice UV</p>
       <p>{uvInd}</p>
     </B1>
   )
@@ -86,7 +111,7 @@ const UV = ({uvInd}) => {
 const Viento = ({vientoV}) => {
   return (
     <A2>
-      <p>Viento</p>
+      <p>Velocidad del Viento</p>
       <p>{vientoV} km/h</p>
     </A2>
   )
@@ -96,7 +121,7 @@ const Visibilidad = ({visib}) => {
   return (
     <B2>
       <p>Visibilidad</p>
-      <p>{visib} m</p>
+      <p>{visib} km</p>
     </B2>
   )
 }
@@ -104,8 +129,10 @@ const Visibilidad = ({visib}) => {
 const Amanecer = ({amanec,anoch}) => {
   return (
     <A3>
-      <p>Amanecer Anochecer</p>
-      <p>{amanec} {anoch}</p>
+      <A3A>Amanece:</A3A>
+      <A3B>Anochece:</A3B>
+      <A3C>{amanec} hs</A3C>
+      <A3D>{anoch} hs</A3D>
     </A3>
   )
 }
@@ -113,7 +140,7 @@ const Amanecer = ({amanec,anoch}) => {
 const Calidad = ({calid}) => {
   return (
     <B3>
-      <p>Calidad</p>
+      <p>Calidad del Aire</p>
       <p>{calid}</p>
     </B3>
   )

@@ -8,7 +8,7 @@ const Trans = styled.div`
 
 const Transito = () => {
   return (
-    <Trans>Transito</Trans>
+    <Trans>Espacio reservado para la APP de Transito</Trans>
   )
 }
 

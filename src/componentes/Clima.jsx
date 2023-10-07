@@ -5,6 +5,7 @@ import TemperaturaHoy from './TemperaturaHoy'
 import OtrosDatos from './OtrosDatos'
 import TemperaturaHora from './TemperaturaHora'
 import dataClima from './API-Clima.json'
+import weatherCode from './weathercode.json'
 
 const Clim = styled.div`
     width:50%;
@@ -28,18 +29,21 @@ const Clima = () => {
   const uvInd = dataClima.hourly.uv_index[25]
   const vientoV = dataClima.current_weather.windspeed
   const vientoD = dataClima.current_weather.winddirection
-  const amanec = (dataClima.daily.sunrise[0]).slice(11,16)
+  const amanec = dataClima.daily.sunrise[0].slice(11,16)
   const anoch = dataClima.daily.sunset[0].slice(11,16)
-  const visib = dataClima.hourly.visibility[0]
+  const visib = dataClima.hourly.visibility[0]/1000
   const calid = dataClima.hourly.european_aqi[0]
   const weathercode = dataClima.current_weather.weathercode
+  const weathercodeDef = weatherCode[weathercode]
+  const tempHora = dataClima.hourly.temperature_2m
+  const horaT = dataClima.hourly.time
 
   return (
     <Clim>
       <Proximos/>
-      <TemperaturaHoy tempAct={tempAct} tempMax={tempMax} tempMin={tempMin} lluv={lluv} weathercode={weathercode}/>
+      <TemperaturaHoy tempAct={tempAct} tempMax={tempMax} tempMin={tempMin} lluv={lluv} weathercode={weathercode} weathercodeDef={weathercodeDef}/>
       <OtrosDatos humed={humed} vientoV={vientoV} vientoD={vientoD} uvInd={uvInd} amanec={amanec} anoch={anoch} visib={visib} calid={calid}/>
-      <TemperaturaHora/>
+      <TemperaturaHora tempHora={tempHora} horaT={horaT}/>
     </Clim>
   )
 }
