@@ -12,12 +12,16 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex; 
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .App-link {
-  color: #61dafb;
+  color: #8884d8;
 }
