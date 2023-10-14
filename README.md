@@ -8,11 +8,11 @@ La mitad izquierda muestra datos del clima obtenidos de "open-meteo.com":
 
 -El recuadro principal, muestra la información del clima de día actual: temperatura actual, temperatura máxima y mínima para hoy, ademá de un ícono representativo del "weathercode" con su descripción.
 
--Los 6 recuadros más pequeños brindan datos de: Humedad, Indice UV, velocidad del viento, visibilidad en km, horario de Amanecer/Anochecer y la calidad del aire.
+-Los 6 recuadros más pequeños brindan datos de: Humedad, Indice UV, velocidad del viento, visibilidad en km, horario de Amanecer/Anochecer y la calidad del aire (obtenido también de Open-Meteo).
 
 -El recuadro inferior muestra un aproximado de la variación horaria de la temparuta para el día de la fecha.
 
--El recuadro de la derecha muestra el pronóstico para los próximos días (proximamente).
+-El recuadro de la derecha muestra el pronóstico para los próximos 4 días (muestra la condición del clima y las temperaturas máxima-mínima).
 
 ## Datos de Desarrollo 🛠️
 
