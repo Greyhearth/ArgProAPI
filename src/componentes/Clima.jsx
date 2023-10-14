@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Proximos from './Proximos'
 import TemperaturaHoy from './TemperaturaHoy'
 import OtrosDatos from './OtrosDatos'
 import TemperaturaHora from './TemperaturaHora'
-import dataClima from './API-Clima.json'
-import weatherCode from './weathercode.json'
+// import dataClima from './API-Clima.json'
+import weatherCodeDef from './weathercode.json'
+import API from './API'
 
 const Clim = styled.div`
     width:50%;
@@ -18,33 +19,62 @@ const Clim = styled.div`
     gap: 1.9rem;
     padding:2rem;
     place-items: center;
+    @media (max-width: 768px) {
+      width:100%;
+  }
 `
 
 const Clima = () => {
-  const tempAct = dataClima.current_weather.temperature
-  const tempMax = dataClima.daily.temperature_2m_max[0]
-  const tempMin = dataClima.daily.temperature_2m_min[0]
-  const humed = dataClima.hourly.relativehumidity_2m[0]
-  const lluv = dataClima.hourly.precipitation_probability[75]
-  const uvInd = dataClima.hourly.uv_index[25]
-  const vientoV = dataClima.current_weather.windspeed
-  const vientoD = dataClima.current_weather.winddirection
-  const amanec = dataClima.daily.sunrise[0].slice(11,16)
-  const anoch = dataClima.daily.sunset[0].slice(11,16)
-  const visib = dataClima.hourly.visibility[0]/1000
-  const calid = dataClima.hourly.european_aqi[0]
-  const weathercode = dataClima.current_weather.weathercode
-  const weathercodeDef = weatherCode[weathercode]
-  const tempHora = dataClima.hourly.temperature_2m
-  const horaT = dataClima.hourly.time
+  const [dataClima,setDataClima] = useState(null)
+  const [dataCalidad,setDataCalidad] = useState(null)
+  const [error,setError] = useState(null)
+  const [cargando,setCargando] = useState(true)
+
+  useEffect(() => {
+    API(setDataClima,setError,setCargando,setDataCalidad)
+  }, [])
+  
+    // Usados para debuggear los .json captados por la API.jsx y ver posibles errores.
+    // console.log(dataClima);
+    // console.log(dataCalidad);
+    // console.log(error);
+    // console.log(cargando);
 
   return (
-    <Clim>
-      <Proximos/>
-      <TemperaturaHoy tempAct={tempAct} tempMax={tempMax} tempMin={tempMin} lluv={lluv} weathercode={weathercode} weathercodeDef={weathercodeDef}/>
-      <OtrosDatos humed={humed} vientoV={vientoV} vientoD={vientoD} uvInd={uvInd} amanec={amanec} anoch={anoch} visib={visib} calid={calid}/>
-      <TemperaturaHora tempHora={tempHora} horaT={horaT}/>
-    </Clim>
+    <>
+      {cargando && <>Cargando datos del clima...</>}
+      {error && <>Hubo un error: {error}</>}
+      {dataClima &&
+        <Clim>
+          <TemperaturaHoy 
+            tempAct={dataClima.current.temperature_2m} 
+            tempMax={dataClima.daily.temperature_2m_max[0]} 
+            tempMin={dataClima.daily.temperature_2m_min[0]} 
+            weatherCode={dataClima.current.weathercode} 
+            weatherCodeDef={weatherCodeDef[dataClima.current.weathercode]}
+          />
+          <OtrosDatos 
+            humed={dataClima.hourly.relativehumidity_2m[0]} 
+            vientoV={dataClima.current.windspeed_10m} 
+            vientoD={dataClima.current.winddirection_10m} 
+            uvInd={dataClima.hourly.uv_index[0]} 
+            amanec={dataClima.daily.sunrise[0].slice(11,16)} 
+            anoch={dataClima.daily.sunset[0].slice(11,16)} 
+            visib={dataClima.hourly.visibility[0]/1000} 
+            calid={dataCalidad.current.european_aqi}
+          />
+          <Proximos 
+            icon={dataClima.daily.weathercode} 
+            max={dataClima.daily.temperature_2m_max} 
+            min={dataClima.daily.temperature_2m_min}
+          />
+          <TemperaturaHora 
+            tempHora={dataClima.hourly.temperature_2m} 
+            horaT={dataClima.hourly.time}
+          />
+        </Clim>
+      }
+    </>
   )
 }
 

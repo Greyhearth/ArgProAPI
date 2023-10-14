@@ -8,7 +8,7 @@ const Hoy = styled.div`
     grid-template-rows: repeat(5, 1fr);
     height:100%;
     width:100%;
-    background:linear-gradient(45deg, #adadad, white);
+    background:linear-gradient(45deg, grey, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
     padding:0.5rem;
@@ -20,6 +20,12 @@ const IconoCont = styled.p`
 const Ico = styled.img`
     max-width: 8rem;
     height: auto;
+    @media (max-height: 910px) {
+        max-width: 6rem;
+    }
+    @media (max-width: 768px) {
+        max-width: 4rem;
+    }
 `
 
 const Desc = styled.p`
@@ -42,14 +48,14 @@ const Min = styled.p`
     font-size: 1.2rem;
 `
 
-const TemperaturaHoy = ({tempAct,tempMax,tempMin,lluv,weathercode,weathercodeDef}) => {
+const TemperaturaHoy = ({tempAct,tempMax,tempMin,weatherCode,weatherCodeDef}) => {
   return (
     <Hoy>
-      <IconoCont><Ico src={require(`./weatherIcons/${weathercode}.png`)} alt={weathercode}/></IconoCont>
+      <IconoCont><Ico src={require(`./weatherIcons/${weatherCode}.png`)} alt={weatherCode}/></IconoCont>
       <Temp>{tempAct}°C</Temp>
-      <Max>T°C Max: {tempMax}</Max>
-      <Min>T°C Min: {tempMin}</Min>
-      <Desc>{weathercodeDef}</Desc>
+      <Max>Max: {tempMax}°C</Max>
+      <Min>Min: {tempMin}°C</Min>
+      <Desc>{weatherCodeDef}</Desc>
         {/* <Lluv>Prob. de lluvia: {lluv}%</Lluv>  */}
     </Hoy>
   )

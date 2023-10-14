@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const Hora = styled.div`
     grid-area: 4 / 1 / 4 / 5;
@@ -35,13 +35,21 @@ const TemperaturaHora = ({tempHora,horaT}) => {
   ];
   
   const renderLineChart = (
-    <LineChart width={850} height={160} data={data}>
-      <Line type="monotone" dataKey="Temp" stroke="#c4c72e"/>
-      <CartesianGrid stroke="#646566" strokeDasharray="10 10" />
-      <XAxis dataKey="name" tick={{fontSize: 15}}  />
-      <YAxis  tick={{fontSize: 15}}/>
-      <Tooltip />
-    </LineChart>
+    <ResponsiveContainer width="95%" height="80%">
+      <AreaChart width={850} height={160} data={data}>
+        <defs>
+          <linearGradient id="tempHora" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#dbee72" stopOpacity={0.8}/>
+            <stop offset="95%" stopColor="#dbee72" stopOpacity={0}/>
+          </linearGradient>
+        </defs>
+        <Area type="monotone" dataKey="Temp" stroke="#c4c72e" fillOpacity={1} fill="url(#tempHora)" />
+        <CartesianGrid stroke="#646566" strokeDasharray="10 10" />
+        <XAxis dataKey="name" tick={{fontSize: 15}}  />
+        <YAxis  tick={{fontSize: 15}}/>
+        <Tooltip />
+      </AreaChart>
+    </ResponsiveContainer>
   );
 
   return (
