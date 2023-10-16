@@ -7,6 +7,7 @@ const Otros = styled.div`
     height:100%;
     width:100%;
     display: flex;
+    gap:1rem;
 `
   // Sección A y B actúan como columnas en pantallas anchas, pero permiten verse como filas en pantallas angostas.
 const SeccionA = styled.div`
@@ -14,23 +15,21 @@ const SeccionA = styled.div`
     width:50%;
     display: flex;
     flex-direction: column;
-    padding:0.5rem;
+    gap:1rem;
 `
 const SeccionB = styled.div`
     height:100%;
     width:50%;
     display: flex;
     flex-direction: column;
-    padding:0.5rem;
+    gap:1rem;
 `
   // El formato de cada rectángulo que muestra un dato.
 const Dato = styled.div`
     height:100%;
-    width:100%;
     background:linear-gradient(315deg, #adadad, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-    margin:0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
