@@ -6,7 +6,7 @@ import OtrosDatos from './OtrosDatos'
 import TemperaturaHora from './TemperaturaHora'
 // import dataClima from './API-Clima.json'
 import weatherCodeDef from './weathercode.json'
-import API from './API'
+import fetchAPI from './fetchAPI'
 
 const Clim = styled.div`
     width:50%;
@@ -31,7 +31,7 @@ const Clima = () => {
   const [cargando,setCargando] = useState(true)
 
   useEffect(() => {
-    API(setDataClima,setError,setCargando,setDataCalidad)
+    fetchAPI(setDataClima,setError,setCargando,setDataCalidad)
   }, [])
   
     // Usados para debuggear los .json captados por la API.jsx y ver posibles errores.
