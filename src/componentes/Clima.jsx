@@ -52,9 +52,11 @@ const Clima = () => {
       {dataClima &&
         <Clim>
           <TemperaturaHoy 
-            tempAct={dataClima.current.temperature_2m} 
+            tempAct={dataClima.current.temperature_2m}
+            sensTerm={dataClima.current.apparent_temperature} 
             tempMax={dataClima.daily.temperature_2m_max[0]} 
             tempMin={dataClima.daily.temperature_2m_min[0]} 
+            lluvia={dataClima.hourly.precipitation_probability[0]} 
             weatherCode={dataClima.current.weathercode} 
             weatherCodeDef={weatherCodeDef[dataClima.current.weathercode]}
           />

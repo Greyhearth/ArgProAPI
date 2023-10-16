@@ -1,23 +1,32 @@
 import React from 'react'
 import styled from 'styled-components';
 
+    // Da formato al recuadro principal.
 const Hoy = styled.div`
     grid-area: 1 / 1 / 1 / 4;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
     height:100%;
     width:100%;
     background:linear-gradient(45deg, grey, white);
     border-radius: 10px;
     box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
     padding:0.5rem;
+    display:flex;
+    gap:0.5rem;
 `
-const IconoCont = styled.p`
-    grid-area: 1 / 1 / 5 / 1;
+    // Crea columnas que muestren los datos
+const Seccion = styled.div`
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `
-
-const Ico = styled.img`
+    // Crea un contenedor para el ícono de 'weathercode'.
+const IcoD = styled.div`
+    display: flex;
+    justify-content: center;
+`
+    // Crea el estilo del ícono para controlar su tamaño según la pantalla.
+const IcoI = styled.img`
     max-width: 8rem;
     height: auto;
     @media (max-height: 910px) {
@@ -27,36 +36,52 @@ const Ico = styled.img`
         max-width: 4rem;
     }
 `
-
+    // Modifica el tamaño de la fuente de la descripción del 'weathercode'.
 const Desc = styled.p`
-    grid-area: 5 / 1 / 5 / 1;
     font-size: 1.2rem;
 `
-
+    // Modifica el tamaño de la fuente de la temperatura actual del día.
 const Temp = styled.p`
-    grid-area: 1 / 2 / 4 / 2;
-    font-size: 4rem;
+    font-size: 5rem;
 `
-
-const Max = styled.p`
-    grid-area: 4 / 2 / 4 / 2;
+    // Modifica el tamaño del símbolo de grados centígrados principal.
+const SupG = styled.sup`
+    font-size: 1.5rem;
+`
+    // Modifica el tamaño de la fuente de los datos extra del día.
+const Datos = styled.p`
     font-size: 1.2rem;
+    margin:0.3rem;
+`
+    // Modifica el tamaño del símbolo de grados centígrados de los datos pequeños.
+    const SupC = styled.sup`
+    font-size: 0.7rem;
 `
 
-const Min = styled.p`
-    grid-area: 5 / 2 / 5 / 2;
-    font-size: 1.2rem;
-`
-
-const TemperaturaHoy = ({tempAct,tempMax,tempMin,weatherCode,weatherCodeDef}) => {
+const TemperaturaHoy = ({tempAct,sensTerm,tempMax,tempMin,lluvia,weatherCode,weatherCodeDef}) => {
+    const fecha = new Date().toLocaleDateString('es-es', { weekday:"short", day:"numeric", month:"short"});
   return (
     <Hoy>
-      <IconoCont><Ico src={require(`./weatherIcons/${weatherCode}.png`)} alt={weatherCode}/></IconoCont>
-      <Temp>{tempAct}°C</Temp>
-      <Max>Max: {tempMax}°C</Max>
-      <Min>Min: {tempMin}°C</Min>
-      <Desc>{weatherCodeDef}</Desc>
-        {/* <Lluv>Prob. de lluvia: {lluv}%</Lluv>  */}
+
+        <Seccion>
+            <Desc>{fecha}</Desc>
+            <Temp>{tempAct}<SupG>°C</SupG></Temp>
+        </Seccion>
+
+        <Seccion>
+            <IcoD>
+                <IcoI src={require(`./weatherIcons/${weatherCode}.png`)} alt={weatherCode}/>
+            </IcoD>
+            <Desc>{weatherCodeDef}</Desc>
+        </Seccion>
+
+        <Seccion>
+            <Datos>Sens.Term.: {sensTerm}<SupC>°C</SupC></Datos>
+            <Datos>Máxima: {tempMax}<SupC>°C</SupC></Datos>
+            <Datos>Minima: {tempMin}<SupC>°C</SupC></Datos>
+            <Datos>Prob. de lluvia: {lluvia}%</Datos> 
+        </Seccion>
+
     </Hoy>
   )
 }
