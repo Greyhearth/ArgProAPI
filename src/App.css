@@ -7,7 +7,8 @@
 .App {
   text-align: center;
 }
-
+  /*En pantallas anchas, divide en derecha e izquierda*/
+  /*En pantallas angostas (tablet, celular), divide en arriba y abajo*/
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
