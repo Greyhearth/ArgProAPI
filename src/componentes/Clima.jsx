@@ -8,6 +8,8 @@ import TemperaturaHora from './TemperaturaHora'
 import weatherCodeDef from './weathercode.json'
 import fetchAPI from './fetchAPI'
 
+  // Clima.jsx cambia su ancho máximo para adaptarse a pantallas más pequeñas
+  // En el futuro espero modificarlo para que el fondo responta a si es de día/noche y posiblemente al clima.
 const Clim = styled.div`
     width:50%;
     min-height: 100vh;
@@ -25,11 +27,13 @@ const Clim = styled.div`
 `
 
 const Clima = () => {
+  // Los 4 useState definidos serán usados durante la llamada a "fetchAPI"
   const [dataClima,setDataClima] = useState(null)
   const [dataCalidad,setDataCalidad] = useState(null)
   const [error,setError] = useState(null)
   const [cargando,setCargando] = useState(true)
 
+  // Hace la llamada a "fetchApi" cada vez que se abre la aplicación.
   useEffect(() => {
     fetchAPI(setDataClima,setError,setCargando,setDataCalidad)
   }, [])
@@ -40,6 +44,7 @@ const Clima = () => {
     // console.log(error);
     // console.log(cargando);
 
+  // En orden, muestra un mensaje de carga, o un mensaje de error o los componentes si se obtuvo correctamente el .json
   return (
     <>
       {cargando && <>Cargando datos del clima...</>}
