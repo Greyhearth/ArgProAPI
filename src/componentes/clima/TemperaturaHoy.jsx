@@ -70,7 +70,7 @@ const TemperaturaHoy = ({tempAct,sensTerm,tempMax,tempMin,lluvia,weatherCode,wea
 
         <Seccion>
             <IcoD>
-                <IcoI src={require(`./weatherIcons/${weatherCode}.png`)} alt={weatherCode}/>
+                <IcoI src={require(`../../assets/weatherIcons/${weatherCode}.png`)} alt={weatherCode}/>
             </IcoD>
             <Desc>{weatherCodeDef}</Desc>
         </Seccion>

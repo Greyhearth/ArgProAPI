@@ -64,7 +64,7 @@ const Proximos = ({icon,max,min}) => {
         <Dia>
             <Titulo>Mañana</Titulo>
             <IcoD>
-                <IcoI src={require(`./weatherIcons/${icon[1]}.png`)} alt={icon[1]}/>
+                <IcoI src={require(`../../assets/weatherIcons/${icon[1]}.png`)} alt={icon[1]}/>
             </IcoD>
             <MaxMin>
                 <Temp>Max: {max[1]}<SupC>°C</SupC></Temp>
@@ -75,7 +75,7 @@ const Proximos = ({icon,max,min}) => {
         <Dia>
             <Titulo>En 2 Días</Titulo>
             <IcoD>
-                <IcoI src={require(`./weatherIcons/${icon[2]}.png`)} alt={icon[2]}/>
+                <IcoI src={require(`../../assets/weatherIcons/${icon[2]}.png`)} alt={icon[2]}/>
             </IcoD>
             <MaxMin>
                 <Temp>Max: {max[2]}<SupC>°C</SupC></Temp>
@@ -86,7 +86,7 @@ const Proximos = ({icon,max,min}) => {
         <Dia>
             <Titulo>En 3 Días</Titulo>
             <IcoD>
-                <IcoI src={require(`./weatherIcons/${icon[3]}.png`)} alt={icon[3]}/>
+                <IcoI src={require(`../../assets/weatherIcons/${icon[3]}.png`)} alt={icon[3]}/>
             </IcoD>
             <MaxMin>
                 <Temp>Max: {max[3]}<SupC>°C</SupC></Temp>
@@ -97,7 +97,7 @@ const Proximos = ({icon,max,min}) => {
         <Dia>
             <Titulo>En 4 Días</Titulo>
             <IcoD>
-                <IcoI src={require(`./weatherIcons/${icon[4]}.png`)} alt={icon[4]}/>
+                <IcoI src={require(`../../assets/weatherIcons/${icon[4]}.png`)} alt={icon[4]}/>
             </IcoD>
             <MaxMin>
                 <Temp>Max: {max[4]}<SupC>°C</SupC></Temp>
