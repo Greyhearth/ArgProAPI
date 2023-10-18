@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import Proximos from './Proximos'
-import TemperaturaHoy from './TemperaturaHoy'
-import OtrosDatos from './OtrosDatos'
-import TemperaturaHora from './TemperaturaHora'
-// import dataClima from './API-Clima.json'
-import weatherCodeDef from './weathercode.json'
-import fetchAPI from './fetchAPI'
+import Proximos from './clima/Proximos'
+import TemperaturaHoy from './clima/TemperaturaHoy'
+import OtrosDatos from './clima/OtrosDatos'
+import TemperaturaHora from './clima/TemperaturaHora'
+import weatherCodeDef from '../assets/weathercode.json'
+import fetchAPI from '../api/fetchAPI'
 
   // Clima.jsx cambia su ancho máximo para adaptarse a pantallas más pequeñas
   // En el futuro espero modificarlo para que el fondo responta a si es de día/noche y posiblemente al clima.
