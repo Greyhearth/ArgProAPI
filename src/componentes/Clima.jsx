@@ -36,12 +36,6 @@ const Clima = () => {
   useEffect(() => {
     fetchAPI(setDataClima,setError,setCargando,setDataCalidad)
   }, [])
-  
-    // Usados para debuggear los .json captados por la API.jsx y ver posibles errores.
-    // console.log(dataClima);
-    // console.log(dataCalidad);
-    // console.log(error);
-    // console.log(cargando);
 
   // En orden, muestra un mensaje de carga, o un mensaje de error o los componentes si se obtuvo correctamente el .json
   return (
@@ -55,18 +49,18 @@ const Clima = () => {
             sensTerm={dataClima.current.apparent_temperature} 
             tempMax={dataClima.daily.temperature_2m_max[0]} 
             tempMin={dataClima.daily.temperature_2m_min[0]} 
-            lluvia={dataClima.hourly.precipitation_probability[0]} 
+            lluvia={dataClima.hourly.precipitation_probability[dataClima.hourly.time.findIndex(hora => hora.slice(11,13) === dataClima.current.time.slice(11,13))]} 
             weatherCode={dataClima.current.weathercode} 
             weatherCodeDef={weatherCodeDef[dataClima.current.weathercode]}
           />
           <OtrosDatos 
-            humed={dataClima.hourly.relativehumidity_2m[0]} 
+            humed={dataClima.hourly.relativehumidity_2m[dataClima.hourly.time.findIndex(hora => hora.slice(11,13) === dataClima.current.time.slice(11,13))]} 
             vientoV={dataClima.current.windspeed_10m} 
             vientoD={dataClima.current.winddirection_10m} 
-            uvInd={dataClima.hourly.uv_index[0]} 
+            uvInd={dataClima.hourly.uv_index[dataClima.hourly.time.findIndex(hora => hora.slice(11,13) === dataClima.current.time.slice(11,13))]} 
             amanec={dataClima.daily.sunrise[0].slice(11,16)} 
             anoch={dataClima.daily.sunset[0].slice(11,16)} 
-            visib={dataClima.hourly.visibility[0]/1000} 
+            visib={dataClima.hourly.visibility[dataClima.hourly.time.findIndex(hora => hora.slice(11,13) === dataClima.current.time.slice(11,13))]/1000} 
             calid={dataCalidad.current.european_aqi}
           />
           <Proximos 
@@ -75,8 +69,8 @@ const Clima = () => {
             min={dataClima.daily.temperature_2m_min}
           />
           <TemperaturaHora 
-            tempHora={dataClima.hourly.temperature_2m} 
-            horaT={dataClima.hourly.time}
+            tempHora={dataClima.hourly.temperature_2m.slice(0,24)} 
+            horaT={dataClima.hourly.time.slice(0,24)}
           />
         </Clim>
       }
