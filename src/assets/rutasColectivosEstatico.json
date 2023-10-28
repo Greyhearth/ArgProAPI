@@ -1,0 +1,112 @@
+[
+  {
+    "route_id": "238",
+    "route_short_name": "1A",
+    "trip_headsign": "Ramal 1 - IDA"
+  },
+  {
+    "route_id": "239",
+    "route_short_name": "1A",
+    "trip_headsign": "Ramal A - VUELTA"
+  },
+  {
+    "route_id": "1318",
+    "route_short_name": "2A",
+    "trip_headsign": "a Lomas del Mirador"
+  },
+  {
+    "route_id": "1319",
+    "route_short_name": "2A",
+    "trip_headsign": "a Aduana"
+  },
+  {
+    "route_id": "1320",
+    "route_short_name": "2B",
+    "trip_headsign": "Ramal E - RN 3 x Rivadavia"
+  },
+  {
+    "route_id": "1321",
+    "route_short_name": "2B",
+    "trip_headsign": "Ramal E - Pza. Miserere x Av. Rivadavia"
+  },
+  {
+    "route_id": "959",
+    "route_short_name": "4A",
+    "trip_headsign": "a Correo Central"
+  },
+  {
+    "route_id": "960",
+    "route_short_name": "4A",
+    "trip_headsign": "a Lomas del Mirador"
+  },
+  {
+    "route_id": "975",
+    "route_short_name": "4B",
+    "trip_headsign": "Ramal D - IDA"
+  },
+  {
+    "route_id": "976",
+    "route_short_name": "4B",
+    "trip_headsign": "Ramal D - VUELTA"
+  },
+  {
+    "route_id": "1652",
+    "route_short_name": "5A",
+    "trip_headsign": "a Pte. La Noria"
+  },
+  {
+    "route_id": "1653",
+    "route_short_name": "5A",
+    "trip_headsign": "a Lacarra"
+  },
+  {
+    "route_id": "466",
+    "route_short_name": "87A",
+    "trip_headsign": "a San Martin x Autop."
+  },
+  {
+    "route_id": "543",
+    "route_short_name": "111B",
+    "trip_headsign": "a Italia Partido Gral. San Martin"
+  },
+  {
+    "route_id": "544",
+    "route_short_name": "111B",
+    "trip_headsign": "a CarlosCalvo y Azopardo x Avde losConstituyentes"
+  },
+  {
+    "route_id": "549",
+    "route_short_name": "127A",
+    "trip_headsign": "a Panamericana y Ruta 202"
+  },
+  {
+    "route_id": "550",
+    "route_short_name": "127A",
+    "trip_headsign": "a Pza Martí­n Fierro"
+  },
+  {
+    "route_id": "1468",
+    "route_short_name": "153A",
+    "trip_headsign": "a B° Nuevo"
+  },
+  {
+    "route_id": "1464",
+    "route_short_name": "253A",
+    "trip_headsign": "a Liniers"
+  },
+  {
+    "route_id": "1465",
+    "route_short_name": "253A",
+    "trip_headsign": "a LIBERTAD"
+  },
+  {
+    "route_id": "1466",
+    "route_short_name": "321A",
+    "trip_headsign": "a LIBERTAD"
+  },
+  {
+    "route_id": "1467",
+    "route_short_name": "321A",
+    "trip_headsign": "a Est. CASTELAR"
+  }
+]
