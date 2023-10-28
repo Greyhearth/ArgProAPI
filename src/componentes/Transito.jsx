@@ -19,6 +19,14 @@ const Trans = styled.div`
   }
 `
 
+const Mensaje = styled.label`
+  font-size: 1.5rem;
+`
+
+const Lineas = styled.select`
+  margin-left: 10px;
+`
+
 const Transito = () => {
   const [dataTransporte, setDataTransporte] = useState([]);
   const [lineaElegida, setLineaElegida] = useState("238");
@@ -36,18 +44,26 @@ const Transito = () => {
     iconSize: [32,45],     
   });
 
-  // Llama de nuevo a la función "fetchAPITransporte" cada vez que cambia "lineaElegida" por la selección del usuario.
+    // Se usaron 2 useEffect, uno para actualizar tras cada cambio de "lineaElegida" y otro para hacerlo cada 31 segundos. En el futuro, espero lograrlo con uno sólo.
+    // Llama de nuevo a la función "fetchAPITransporte" cada vez que cambia "lineaElegida" por la selección del usuario.
   useEffect(() => {
     fetchAPITransporte();
     // La siguiente linea de comentario evita el mensaje de advertencia, pero es intencional, ya que el useEffect sólo necesita cargarse cada vez que cambia "lineaElegida", no requiere otra dependencia.
     // eslint-disable-next-line
   }, [lineaElegida]);
 
-  // useEffect(() => {
-  //   setInterval(()=>{
-  //     fetchAPITransporte()
-  //   },31000);
-  // });
+    // Llama de nuevo a la función "fetchAPITransporte" cada 31 segundos (ya que la API actualiza su datos cada 30 segundos).
+  useEffect(() => {
+    // Fija un intervalo con un nombre.
+    const intervalId = setInterval(() => {
+      fetchAPITransporte();
+    // Fija el intervalo en 31 segundos.
+    }, 31000)
+    // Al terminar, limpia el intervalo para reiniciarlo.
+    return () => clearInterval(intervalId);
+    // La siguiente linea de comentario evita el mensaje de advertencia, pero es intencional, ya que este useEffect sólo necesita cargarse cada vez que cambia "lineaElegida" o si se cumplen los 31 segundos.
+    // eslint-disable-next-line
+  }, [lineaElegida])
 
   // La función fetch que obtiene la información de los colectivos a partir de "urlAPItransporte" que varía según la opción elegida más abajo. En el futuro, debería estar en un archivo aparte.
   const fetchAPITransporte = async () => {
@@ -65,10 +81,10 @@ const Transito = () => {
 
       {/* El menu desplegable ofrece las opciones obtenidas de un archivo estático para evitar solicitar todas las lineas a la vez. */}
       <div>
-        <label>
-          Elija la linea:
-          <select
-            name="selectedFruit"
+        <Mensaje>
+          Elija una linea de Colectivos:
+          <Lineas
+            name="lineaElegida"
             value={lineaElegida}
             onChange={(e)=>setLineaElegida(e.target.value)}
           >
@@ -79,8 +95,8 @@ const Transito = () => {
                <option value={routeId}>{nombre}</option>
                )
             })}
-          </select>
-        </label>
+          </Lineas>
+        </Mensaje>
       </div>
 
       {/* el mapa esta centrado en las coordenadas de CABA. */}
